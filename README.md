@@ -26,14 +26,22 @@ npm run build     # static site in dist/
 
 Any element with `data-desi-text="..."` swaps to that text when a visitor picks **Desi** in the nav.
 
-## Going live on GitHub Pages
+## Publishing
 
-1. Create a GitHub repository and push this folder to `main`.
-2. Repository **Settings > Pages > Source: GitHub Actions**.
-3. **Settings > Secrets and variables > Actions > Variables**:
-   - with a custom domain: `SITE_URL=https://yourdomain.com`, `BASE_PATH=/`, and add the domain under Settings > Pages (put a `CNAME` file in `public/` with the domain);
-   - without one: `SITE_URL=https://<user>.github.io`, `BASE_PATH=/<repo>/`.
-4. Every push to `main` builds and deploys (`.github/workflows/deploy.yml`).
+Live at **https://gamedevuppsala-glitch.github.io/viidesi-studios/**, served by GitHub Pages from the
+`gh-pages` branch.
+
+```bash
+npm run deploy    # builds with the Pages base path and pushes dist-pages/ to gh-pages
+```
+
+Push source changes to `main` as usual. The live site only changes when you run `npm run deploy`.
+
+- **Custom domain later:** run `SITE_URL=https://yourdomain.com BASE_PATH=/ CNAME=yourdomain.com npm run deploy`,
+  then add the domain under the repo's Settings > Pages and point its DNS at GitHub.
+- **Auto-deploy on every push (optional):** run `gh auth refresh -s workflow`, move
+  `tools/github-actions-deploy.yml` to `.github/workflows/deploy.yml`, and set Settings > Pages > Source to
+  GitHub Actions with the repo variables `SITE_URL` and `BASE_PATH`.
 
 After it is live: add the site to Google Search Console and Bing Webmaster Tools, submit
 `sitemap-index.xml`, and put the site URL in the Play Console listing (Store settings > Website), which
