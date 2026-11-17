@@ -399,7 +399,8 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.fov = w / h < 0.8 ? 64 : 46;
-    if (w / h > 1.2) camera.setViewOffset(w, h, -w * 0.16, 0, w, h); else camera.clearViewOffset();
+    if (w / h > 1.2) camera.setViewOffset(w, h, -w * 0.16, 0, w, h);
+    else camera.clearViewOffset();
     camera.updateProjectionMatrix();
   };
   const ro = new ResizeObserver(resize); ro.observe(container); resize();
@@ -409,8 +410,8 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
   io.observe(container);
 
   const clock = new THREE.Clock();
-  const camPos = new THREE.Vector3(st.x - 2, st.y + 6, 17);
-  const camLook = new THREE.Vector3();
+  const camPos = new THREE.Vector3(st.x + 3, st.y + 8, 24);
+  const camLook = new THREE.Vector3(st.x + 6, st.y + 4, -6);
   const tmpV = new THREE.Vector3();
   let raf = 0;
 
@@ -505,10 +506,11 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
 
     // camera: side-on chase with pointer parallax
     ptrS.lerp(ptr, 1 - Math.pow(0.001, dt));
-    const camTarget = tmpV.set(st.x + 3 + ptrS.x * 3, Math.max(st.y, under?.h ?? st.y) + 5.2 + ptrS.y * 1.6, 17 - ptrS.y * 1.5);
+    const tall = camera.aspect < 0.9;
+    const camTarget = tmpV.set(st.x + (tall ? 6 : 3) + ptrS.x * 3, Math.max(st.y, under?.h ?? st.y) + (tall ? 11 : 5.2) + ptrS.y * 1.6, (tall ? 30 : 17) - ptrS.y * 1.5);
     camPos.lerp(camTarget, 1 - Math.pow(0.02, dt));
     camera.position.copy(camPos);
-    camLook.lerp(new THREE.Vector3(st.x + 7 + ptrS.x * 4, (under?.h ?? st.y) + 2.5, -6), 1 - Math.pow(0.01, dt));
+    camLook.lerp(new THREE.Vector3(st.x + (tall ? 5 : 7) + ptrS.x * 4, (under?.h ?? st.y) + (tall ? 6 : 2.5), -6), 1 - Math.pow(0.01, dt));
     camera.lookAt(camLook);
 
     // my kite follows the pointer, string to the runner
