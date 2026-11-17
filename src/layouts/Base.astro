@@ -14,10 +14,11 @@ interface Props {
   type?: 'website' | 'article' | 'video.other';
   noindex?: boolean;
   published?: string;
+  screens?: boolean; // one-section-per-screen layout (home page)
 }
 const {
   title, description, path = '', image = 'og/home.jpg', lang = 'en', schema = [], keywords,
-  type = 'website', noindex = false, published,
+  type = 'website', noindex = false, published, screens = false,
 } = Astro.props;
 const canonical = abs(path);
 const ogImage = abs(image);
@@ -81,7 +82,7 @@ const nav = [
   <link rel="alternate" type="text/plain" title="LLM summary" href={u('llms.txt')} />
   <link rel="sitemap" href={u('sitemap-index.xml')} />
   <script type="application/ld+json" set:html={ld} />
-  <script is:inline>document.documentElement.classList.add('js');try{if(localStorage.getItem('chhat-desi')==='on')document.documentElement.dataset.desi='on'}catch(e){}</script>
+  <script is:inline>document.documentElement.classList.add('js','m-enter');setTimeout(function(){document.documentElement.classList.add('m-enter-done')},700);try{if(localStorage.getItem('chhat-desi')==='on')document.documentElement.dataset.desi='on'}catch(e){}</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -105,12 +106,15 @@ const nav = [
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" class:list={[{ screens }]}>
     <slot />
   </main>
 
-  <footer class="foot">
+  <footer class:list={['foot', { closing: Astro.slots.has('close') }]}>
+    {Astro.slots.has('close') && <slot name="close-bg" />}
     <div class="wrap">
+      {Astro.slots.has('close') && <div class="close-row"><slot name="close" /></div>}
+      <div class="foot-rows">
       <div class="foot-grid">
         <div>
           <a class="brand" href={u()}><img src={u("brand/viidesi-mark.svg")} alt="" width="36" height="36" /><span>Viidesi<small>Studios</small></span></a>
@@ -143,10 +147,11 @@ const nav = [
           </ul>
         </div>
       </div>
-      <div class="foot-word" aria-hidden="true">chhat pe milte hain</div>
+      {!Astro.slots.has('close') && <div class="foot-word" aria-hidden="true">chhat pe milte hain</div>}
       <div class="foot-base">
         <span>© {new Date().getFullYear()} Viidesi Studios. Made in India. Chhatpat! is a trademark of Viidesi Studios.</span>
         <span>Google Play and the Google Play logo are trademarks of Google LLC.</span>
+      </div>
       </div>
     </div>
   </footer>

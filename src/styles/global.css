@@ -24,7 +24,7 @@
   --body: 'Instrument Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --deva: 'Yatra One', 'Noto Sans Devanagari', serif;
 
-  --wrap: min(1320px, 100% - 2 * var(--gutter));
+  --wrap: min(1280px, 100% - 2 * var(--gutter));
   --gutter: clamp(16px, 4vw, 48px);
   --r-s: 10px;
   --r-m: 18px;
@@ -36,8 +36,6 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--nav-h) + 12px); }
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
 body {
   margin: 0;
   background: var(--night);
@@ -103,7 +101,7 @@ p { margin: 0; text-wrap: pretty; }
 .nav .wrap { display: flex; align-items: center; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font: 800 1.15rem/1 var(--display); letter-spacing: -0.02em; min-height: 44px; }
 .brand img { width: 36px; height: 36px; border-radius: 10px; box-shadow: 0 0 0 1.5px rgba(255,255,255,.18); }
-.brand small { display: block; font: 600 0.68rem/1 var(--body); letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.brand small { display: inline; margin-left: 6px; font: 600 0.68rem/1 var(--body); letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
 .nav-links { display: flex; gap: 6px; margin-left: auto; list-style: none; padding: 0; margin-block: 0; }
 .nav-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.95rem; color: var(--muted); transition: color 0.2s, background 0.2s; }
 .nav-links a:hover, .nav-links a[aria-current='page'] { color: var(--cream); background: rgba(255, 244, 226, 0.08); }
@@ -130,7 +128,7 @@ main > section { position: relative; padding-block: clamp(80px, 11vw, 150px); }
 .sec-head { display: grid; gap: 22px; margin-bottom: clamp(40px, 6vw, 72px); max-width: 900px; }
 .sec-head.center { margin-inline: auto; text-align: center; justify-items: center; }
 .ground-indigo { background: radial-gradient(120% 80% at 80% 0%, #22409f 0%, var(--indigo) 40%, var(--night-2) 100%); }
-.ground-paper { background: var(--paper); color: var(--ink); --muted: rgba(10, 18, 51, 0.72); --line: rgba(10, 18, 51, 0.14); --card: rgba(10, 18, 51, 0.05); }
+.ground-paper { background: var(--paper); color: var(--ink); --muted: #2a2f45; --line: rgba(10, 18, 51, 0.14); --card: rgba(10, 18, 51, 0.05); }
 .ground-paper .eyebrow { color: #c4520a; }
 .ground-paper ::selection { background: var(--ink); color: var(--cream); }
 
@@ -151,13 +149,12 @@ a.frame:hover img, a.frame:hover video, .frame.zoom:hover img, .frame.zoom:hover
 @keyframes marquee { to { transform: translateX(-100%); } }
 
 /* ---------- enter + reveal (motion layer adds .in) ---------- */
-[data-enter] > * { opacity: 0; transform: translateY(24px); }
-.ready [data-enter] > * { animation: enter 1.1s var(--ease) forwards; }
-.ready [data-enter] > *:nth-child(2) { animation-delay: 0.12s; }
-.ready [data-enter] > *:nth-child(3) { animation-delay: 0.24s; }
-.ready [data-enter] > *:nth-child(4) { animation-delay: 0.36s; }
-.ready [data-enter] > *:nth-child(5) { animation-delay: 0.48s; }
-@keyframes enter { to { opacity: 1; transform: none; } }
+[data-enter]:not(section) > * { animation: enter 1.1s var(--ease) both; }
+[data-enter]:not(section) > *:nth-child(2) { animation-delay: 0.12s; }
+[data-enter]:not(section) > *:nth-child(3) { animation-delay: 0.24s; }
+[data-enter]:not(section) > *:nth-child(4) { animation-delay: 0.36s; }
+[data-enter]:not(section) > *:nth-child(5) { animation-delay: 0.48s; }
+@keyframes enter { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 .split-line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 .split-line > span { display: inline-block; }
 
@@ -184,10 +181,52 @@ a.frame:hover img, a.frame:hover video, .frame.zoom:hover img, .frame.zoom:hover
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-  [data-enter] > * { opacity: 1; transform: none; }
+  [data-enter] > * { opacity: 1; transform: none; animation: none !important; }
   .marquee__track { animation: none; }
 }
 
 /* tap targets: standalone text links get a 44px touch height */
 .crumbs a, .next .link, a.link.solo { display: inline-flex; align-items: center; min-height: 44px; }
 .prose a, .prose code { overflow-wrap: anywhere; }
+
+/* ---------- one section per screen (home page) ----------
+   .s sections are exactly --h screens tall on a desktop (1 or 2). They may grow past that only
+   when a short or narrow screen cannot hold the content, so nothing ever overlaps. .g2 splits a
+   two-screen section into two rows, the second starting a full padding under the second screen's top. */
+html:has(main.screens) { scroll-padding-top: 0; }
+main.screens > section.s, footer.closing {
+  --padt: 120px; --padb: 72px;
+  box-sizing: border-box;
+  min-height: calc(var(--h, 1) * 100vh); min-height: calc(var(--h, 1) * 100svh);
+  padding: var(--padt) 0 var(--padb) !important;
+  position: relative;
+}
+main.screens > section.s > .wrap, footer.closing > .wrap { position: relative; z-index: 1; }
+main.screens > section.s.g2 > .wrap {
+  display: grid;
+  grid-template-rows: minmax(calc(100vh - var(--padt) - var(--padb)), auto) auto;
+  grid-template-rows: minmax(calc(100svh - var(--padt) - var(--padb)), auto) auto;
+  row-gap: calc(var(--padt) + var(--padb));
+  align-content: start;
+}
+main.screens > section.s.g2 > .wrap > .row { display: grid; align-content: start; gap: 40px; }
+@media (max-width: 639px) {
+  main.screens > section.s, footer.closing { --padt: 96px; --padb: 48px; min-height: calc(var(--hm, var(--h, 1)) * 100lvh); }
+  main.screens > section.s.g2 > .wrap { grid-template-rows: auto auto; row-gap: 72px; }
+}
+footer.closing { padding-top: var(--padt) !important; border-top: 0; overflow: hidden; }
+footer.closing > .wrap { display: grid; grid-template-rows: 1fr auto; gap: 48px; min-height: calc(100svh - var(--padt) - var(--padb)); }
+footer.closing .close-row { display: grid; align-content: start; justify-items: start; gap: 24px; }
+footer.closing .foot-base { margin-top: 32px; }
+footer.closing :is(.close-bg, .close-bg img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+footer.closing::after { content: ''; position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(4,8,26,.55), rgba(4,8,26,.78) 45%, #04081a 72%); pointer-events: none; }
+
+@media (min-width: 640px) and (max-width: 1023px) { footer.closing .foot-grid { grid-template-columns: 1.3fr repeat(3, 1fr); gap: 24px; } footer.closing .foot-grid > :first-child { grid-column: auto; } footer.closing .foot-grid p { display: none; } }
+@media (max-height: 820px) and (min-width: 1024px) { footer.closing .foot-grid p { display: none; } }
+@media (max-height: 820px) and (min-width: 640px) {
+  footer.closing > .wrap { gap: 24px; }
+  footer.closing .close-row { gap: 14px; }
+  footer.closing .close-h { font-size: clamp(2.4rem, 5vw, 3.6rem) !important; }
+  footer.closing .foot-base { margin-top: 16px; padding-top: 16px; }
+}
+@media (max-width: 639px) { footer.closing { --hm: 2; } footer.closing > .wrap { min-height: calc(2 * 100lvh - var(--padt) - var(--padb)); } }
