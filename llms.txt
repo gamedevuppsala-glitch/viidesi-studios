@@ -1,0 +1,31 @@
+# Viidesi Studios
+
+> Viidesi Studios is an independent Indian video game studio making games by India, for India. Its first game is Chhatpat! (Chhatpat, "Desi Rooftop Run"), a free rooftop parkour game for Android set in a procedurally generated Indian city, with offline play for up to 4 friends on the same Wi-Fi.
+
+Key facts:
+- Game: Chhatpat! Desi Rooftop Run. Free on Google Play: https://play.google.com/store/apps/details?id=com.viidesi.chatpat
+- Platform: Android 8.0 or newer. Plays offline. Current version 0.34.0.
+- Genre: rooftop parkour, runner, open city. 1 player, or 2 to 4 on the same Wi-Fi or phone hotspot with no internet.
+- Languages: English and Desi (Hinglish).
+- 10 heroes (each with a filmi emergency); 55 outfits (each brings its own power); 400+ indian surfaces (hand-painted, jaali to Ajrakh); 100+ kinds of people (with their own walks); 4 friends on one wi-fi (no internet needed); 20 achievements (with Google Play Games).
+- Heroes: Aarav ("Home Alone"), Raju ("10-Minute Delivery"), Golu ("Howzat"), Bunty ("Rishta Runner"), Kamla Dadi ("Prime Time"), Pappu ("Band Baaja Bhaag"), Sweety ("Golden Hour"), Mummy ("Cooker ki Seeti"), Munna ("Sulabh Sprint"), Tinku ("Forwarded Many Times").
+- Landmarks in the city: Red Fort, Qutub Minar, India Gate, Humayun's Tomb, Jama Masjid, Akshardham, Lotus Temple, Agrasen ki Baoli.
+- Power-ups: patang (kite), chai (sprint), gulel (catapult swing).
+- No pop-up ads; adverts appear only on billboards inside the game's city.
+- Contact: gamedevuppsala@gmail.com
+
+## Pages
+- [Chhatpat! game page and press kit](https://gamedevuppsala-glitch.github.io/viidesi-studios/chhatpat/): every feature, the ten stories, landmarks, fact sheet, downloadable screenshots.
+- [Home](https://gamedevuppsala-glitch.github.io/viidesi-studios/): the game in one page, with trailer and FAQ.
+- [Viidesi Studios](https://gamedevuppsala-glitch.github.io/viidesi-studios/studio/): about the studio, upcoming games, advertising inside Chhatpat's city.
+- [Hindi page](https://gamedevuppsala-glitch.github.io/viidesi-studios/hi/): छतपट! गेम के बारे में हिंदी में।
+- [Privacy policy](https://gamedevuppsala-glitch.github.io/viidesi-studios/privacy/)
+
+## Devlog
+- [How Chhatpat builds a new Indian city every run](https://gamedevuppsala-glitch.github.io/viidesi-studios/devlog/building-an-indian-city-every-run/): Gullies 2.6 metres wide, avenues built to Indian road standards, 400 hand-painted surfaces and a crowd that walks into shops. How Chhatpat's procedural desi city is put together on a phone.
+- [Play with friends without internet, on one Wi-Fi](https://gamedevuppsala-glitch.github.io/viidesi-studios/devlog/play-with-friends-without-internet/): How Chhatpat's local multiplayer works with no data at all. A 5-digit game ID, up to 4 phones on one Wi-Fi or hotspot, a shared city with everyone's house in it, and a pot of home objects.
+- [Ten heroes, ten desi emergencies](https://gamedevuppsala-glitch.github.io/viidesi-studios/devlog/ten-heroes-ten-emergencies/): Kamla Dadi's serial, Pappu's baraat, Mummy's pressure cooker and seven more. Meet the ten heroes of Chhatpat and the filmi emergencies that send them running across the rooftops.
+
+## Optional
+- [Full text for language models](https://gamedevuppsala-glitch.github.io/viidesi-studios/llms-full.txt)
+- [Trailer MP4](https://gamedevuppsala-glitch.github.io/viidesi-studios/media/chhatpat-trailer.mp4)

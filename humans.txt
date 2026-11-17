@@ -1,0 +1,8 @@
+/* TEAM */
+Studio: Viidesi Studios
+From: India
+Game: Chhatpat! Desi Rooftop Run
+
+/* SITE */
+Built with: Astro, Three.js, GSAP, Lenis
+Art: captured from the game, built in Unity 6

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Viidesi Studios">
+  <title>Viidesi Studios</title>
+  <defs>
+    <linearGradient id="vg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D3592"/>
+      <stop offset="1" stop-color="#0B1640"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="116" fill="url(#vg)"/>
+  <!-- the V: two folded paper arms, saffron and marigold -->
+  <path d="M96 136h88l72 186v92z" fill="#FFC23D"/>
+  <path d="M416 136h-88l-72 186v92z" fill="#FF8A1F"/>
+  <!-- the two i-dots of "Viidesi": a rani diamond and a teal diamond -->
+  <path d="M218 92l30 30-30 30-30-30z" fill="#FF3D8B"/>
+  <path d="M294 92l30 30-30 30-30-30z" fill="#19B3A3"/>
+</svg>

@@ -1,0 +1,190 @@
+# Viidesi Studios and Chhatpat!: full reference
+
+Source: https://gamedevuppsala-glitch.github.io/viidesi-studios/ . Updated 2026-11-17.
+
+## Viidesi Studios
+Viidesi Studios (also written Viidesi) is an independent video game studio from India. It makes games by India, for India: games about the real, everyday India of today rather than a postcard version. Its first game is Chhatpat!. More games are in development. Contact: gamedevuppsala@gmail.com. Website: https://gamedevuppsala-glitch.github.io/viidesi-studios/.
+
+## Chhatpat! Desi Rooftop Run
+Chhatpat! is a free rooftop parkour game for Android, made in India for India. Every run builds a brand-new Indian city of havelis, chawls, bazaars, temples and stepwells. Sprint from chhat to chhat, fly a patang, gulp chai, dodge Uncle Ji, and race up to 4 friends on the same Wi-Fi with no internet.
+
+- Also known as: Chhatpat, Chhatpat Desi Rooftop Run, Chattpat (earlier spelling), छतपट.
+- Store: Google Play, package com.viidesi.chatpat: https://play.google.com/store/apps/details?id=com.viidesi.chatpat
+- Price: free. No pop-up ads; adverts appear on the city's billboards, walls and screens.
+- Platform: Android 8.0 or newer, phones and tablets. Five graphics modes from Smooth (4 GB phones) to Ultra (flagships), 30 to 144 FPS. Plays offline.
+- Engine: Unity 6 with the Universal Render Pipeline.
+- Players: single player, or 2 to 4 players on the same Wi-Fi or a phone hotspot, no internet.
+- Languages: English, and Desi mode (Hinglish full of pop-culture references).
+- Controls: touch joystick, gyro, left-handed layout, draggable buttons; gamepads and Bluetooth controllers with Xbox, PlayStation and Nintendo button glyphs, remapping and rumble.
+- Version on this page: 0.34.0.
+
+### What you do
+You run, leap, climb and slide across the rooftops of a procedurally generated Indian city to finish a timed errand. There are no lanes: you pick your own route across chhats (roofs), gullies (narrow lanes), stairwells and pipes. You can pick a lock, walk in through a front door and out of the back. Errands send you to the kirana, the halwai, the chemist and the darzi.
+
+### The city
+Every run builds a new city: havelis, chawls, bazaars, gullies, temples, masjids, gurudwaras, stepwells, kirana stores, halwai shops, darzi workshops, cinemas. Landmarks: Red Fort, Qutub Minar, India Gate, Humayun's Tomb, Jama Masjid, Akshardham, Lotus Temple, Agrasen ki Baoli. More than 100 kinds of people walk the streets (chaiwalas, golgappe wale, dabbawalas, shoppers). Autos and traffic below; sky buses, drones and flying cars above. Weather: golden mornings, monsoon, fog, dust storms, moonlit nights. Festival seasons such as the Diwali Mela. Over 400 hand-painted Indian surfaces, from jaali to Ajrakh. Street widths follow Indian urban road standards (gully 2.6 m, lane 4.5 m, road 9.6 m, avenue 15.6 m).
+
+### Power-ups
+- Patang: Ride a kite over the roofs and drop in where the route is clear.
+- Chai: One gulp and you sprint faster for a while.
+- Gulel: Fire the catapult and swing up to the highest point ahead.
+- Plus 12 kinds of boosts lying in the street, and a start kit of boosts to take into a run.
+
+### Who is watching
+Uncle Ji, chowkidars, the havaldar, monkeys that steal power-ups, chappal-throwing uncles, cows who will not move, nosy aunties, stray dogs. Uncle Ji will remind you that Sharma ji's son got 98%.
+
+### Heroes (10)
+- Aarav, story "Home Alone": Riya's parents are out. For now. (Yeh hai Aarav. 22. BA pass (third attempt). Hopeless romantic.)
+- Raju, story "10-Minute Delivery": One order. One address. One very specific item. (Yeh hai Raju. 4.9 stars. Zero chill. Never checks the package.)
+- Golu, story "Howzat": One six. One window. One very angry Sharma Uncle. (Yeh hai Golu. Age 9. Batting average 3. Window average 100%.)
+- Bunty, story "Rishta Runner": Aunty Ji arranged a rishta. The gully final starts in five. (Yeh hai Bunty. Opening batsman. Runaway groom. Still in the sherwani.)
+- Kamla Dadi, story "Prime Time": Power cut. Her serial starts in minutes. The neighbour has a generator. (Yeh hain Kamla Dadi. 78. Bad knee. Has not missed an episode since 2003.)
+- Pappu, story "Band Baaja Bhaag": The baraat can't move without its dhol. The dhol is Pappu. (Yeh hai Pappu. 300 weddings. One dhol. Zero days off.)
+- Sweety, story "Golden Hour": Golden hour lasts twenty minutes. The brand deal needs one selfie. (Yeh hai Sweety. 1.2M followers. 14 ring lights. Filter on since 2020.)
+- Mummy, story "Cooker ki Seeti": Three seetis done. The fourth one takes the ceiling. (Yeh hain Mummy. Kitty party queen. Housie champion. Dal in mortal danger.)
+- Munna, story "Sulabh Sprint": Sharma Aunty's rajma. One working toilet. 1.4 km. (Yeh hai Munna. Three plates of rajma-chawal. One working toilet.)
+- Tinku, story "Forwarded Many Times": Chacha forwarded a scam to 212 groups. Delete it before Dadi reads it. (Yeh hai Tinku. 19. Family IT department. Unpaid. Unstoppable.)
+Special moves include Dhol Blast, Paan Pichkaari and "Khana Khaya?".
+
+### Modes and progression
+- Today's City: every day all players get the same city and race; a new city arrives at midnight; the week's best become the Shehar ke Sher.
+- Play with friends: host gets a 5-digit game ID; up to 3 friends join on the same Wi-Fi; everyone's house stands in one shared city; each player can stake up to 3 home objects; winner takes all.
+- Ghar (home): your house stands in every city and every run starts on its terrace; decorate it with 284 objects found in the city.
+- Dukaan (shop): 55 outfits, each with its own power (Neon Kurta, Superhero Lungi, Gold Chain Bhai and more).
+- Golden puzzle pieces win new stories and outfits. 20 achievements, leaderboards and cloud save with Google Play Games. Share a poster of your best run.
+- Difficulty: Aaram Se, Josh Mein, Khatarnaak, or Apna Level (adapts to how you play).
+
+### Numbers
+- 10 heroes: each with a filmi emergency
+- 55 outfits: each brings its own power
+- 400+ indian surfaces: hand-painted, jaali to Ajrakh
+- 100+ kinds of people: with their own walks
+- 4 friends on one wi-fi: no internet needed
+- 20 achievements: with Google Play Games
+
+## Frequently asked questions
+Q: What is Chhatpat?
+A: Chhatpat! is a free rooftop parkour game for Android phones by Viidesi Studios. You run, leap, climb and slide across the rooftops of a procedurally built Indian city to finish a filmi errand before the clock runs out.
+
+Q: Is Chhatpat free?
+A: Yes. Chhatpat is free to download on Google Play. There are no pop-up ads: adverts only appear on the billboards inside the city.
+
+Q: Does Chhatpat work offline?
+A: Yes. The whole game plays offline. Play with friends also works without internet, over the same Wi-Fi or a phone hotspot.
+
+Q: How do I play Chhatpat with friends?
+A: One phone hosts a game and gets a 5-digit game ID. Up to 3 friends on the same Wi-Fi or hotspot type the ID in. Everyone’s house stands in one shared city and you all race the same errand. Each player can stake up to 3 things from their home, and the winner takes all.
+
+Q: Is the Chhatpat city the same every time?
+A: No. Every run builds a brand-new Indian city with havelis, chawls, bazaars, temples, masjids, gurudwaras and stepwells. Today’s City is the exception: every day all players get the same city and race for the best time before a new one arrives at midnight.
+
+Q: Which Indian landmarks are in the game?
+A: The Red Fort, Qutub Minar, India Gate, Humayun’s Tomb, Jama Masjid, Akshardham, the Lotus Temple and Agrasen ki Baoli rise over the rooftops.
+
+Q: Is Chhatpat like Subway Surfers or Temple Run?
+A: It shares the quick, one-thumb fun of a runner, but Chhatpat is an open rooftop city rather than a three-lane track. You choose your own route across roofs, gullies and stairwells, climb pipes, ride kites and sky buses, and walk in through front doors.
+
+Q: Can I play Chhatpat in Hindi or Hinglish?
+A: You can play in plain English or in Desi mode, which is Hinglish full of pop-culture references.
+
+Q: Which phones can run Chhatpat?
+A: Chhatpat has five graphics modes, from Smooth for 4 GB phones to Ultra for flagships, and runs from 30 to 144 FPS. It needs Android 8.0 or newer.
+
+Q: Does Chhatpat support game controllers?
+A: Yes. Gamepads and Bluetooth controllers work, with button glyphs for Xbox, PlayStation and Nintendo pads, remapping and rumble. On touch you can use a joystick, gyro, a left-handed layout or drag the buttons where you like.
+
+Q: Who makes Chhatpat?
+A: Viidesi Studios, an independent Indian game studio. Chhatpat is its first game, and more games are in the works.
+
+Q: Can brands advertise inside Chhatpat?
+A: Yes. Chhatpat’s city has thousands of in-world billboards, hoardings and LED screens, and weekly brand hunts where players search the city for hidden items. Write to the studio to book a campaign.
+
+## Advertising in Chhatpat
+Brands can appear on in-world roof hoardings, wall paints, banners, posters and animated LED screens, and in weekly brand hunts where players search the city for hidden items. Adverts cannot be tapped and the game does no tracking of its own. Contact gamedevuppsala@gmail.com.
+
+## Devlog
+### How Chhatpat builds a new Indian city every run
+https://gamedevuppsala-glitch.github.io/viidesi-studios/devlog/building-an-indian-city-every-run/
+Chhatpat! is a rooftop parkour game, so the city is the level. And because every run builds a new one, the city has to be good every single time: jumpable, readable, and unmistakably desi.
+
+## Streets first, sized like real Indian streets
+
+Indian streets are not one width. A run in Chhatpat has four classes, each scaled from Indian urban road standards:
+
+- **Gully**: 2.6 metres. You jump these.
+- **Lane**: 4.5 metres, a 3.5 metre carriageway. Still a roof jump, just.
+- **Road**: 9.6 metres, two 3-metre lanes and 1.8-metre footpaths.
+- **Avenue**: 15.6 metres, four lanes with dashes between them.
+
+A straight run keeps one class, and may change by only one step at a junction, so streets flow instead of flickering between sizes. Where a wide street turns into a narrow one, the carriageway tapers and the footpath widens to fill the space. Where two streets with footpaths meet, the kerb sweeps round a 4 to 6 metre radius. Gullies keep their sharp corners, because that is what gullies do.
+
+## Buildings that feel lived in
+
+On those blocks go havelis, chawls, kothis, shops and workshops, temples, masjids, gurudwaras and stepwells. Landmarks rise over the roofs so you can find your way: the Red Fort, Qutub Minar, India Gate, Humayun's Tomb, Jama Masjid, Akshardham, the Lotus Temple and Agrasen ki Baoli.
+
+Every surface is painted. The library holds over 400 Indian surfaces, from jaali screens to Ajrakh block prints, painted with visible brush strokes and sized to real-world scale. One choice of material per building keeps a street from turning into a patchwork.
+
+Roofs are the playground, so they get the most care: water tanks, mumties (the little stair huts on top), washing lines you slide under, charpais, and green pipes that tell you where you can climb.
+
+## A street that is busy for a reason
+
+More than 100 kinds of people walk the streets, each with their own walk: chaiwalas, golgappe wale, dabbawalas, shoppers. They do not just stand and pose. Walkers go into open shops and come out again, and people chat in rings with one speaker at a time. Autos and traffic keep to the road's inner lane, and sky buses and drones fly above.
+
+## Built while you look at the menu
+
+A full city takes real work, so Chhatpat builds it behind the start screen. By the time you have picked a hero and an outfit, the city is standing, and the start screen itself is set inside it, with your hero waiting on a roof and the longest open street running away behind them.
+
+[See the city in the trailer](../../chhatpat/) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).
+
+### Play with friends without internet, on one Wi-Fi
+https://gamedevuppsala-glitch.github.io/viidesi-studios/devlog/play-with-friends-without-internet/
+In a lot of India, the fun is in the same room and the data pack is not. So play with friends in Chhatpat! works without internet: up to four phones on the same Wi-Fi, or on one friend's phone hotspot.
+
+## How a game starts
+
+1. One phone taps **Host**. It shows a **5-digit game ID**.
+2. Friends tap **Join** and type the ID.
+3. Everyone marks ready and the city is built on each phone.
+
+There is no server and no account. The phones talk to each other directly over the local network, so it works at a cousin's wedding, on a school trip or in a hostel with spotty data. (Bluetooth would have been nice, but it cannot carry a race like this. A hotspot can.)
+
+## One city, everyone's house in it
+
+The city in a match is shared. Every player's own **ghar**, the house they have decorated in single player, stands in the same city. You all race the same errand from start to finish, and you can see your friends as ghosts running beside you, with a race strip showing who is ahead.
+
+## A pot worth winning
+
+Before the race, each player can put up to three things from their home into the pot: a jhoola, a cooler, a showcase, a matka. The winner takes all of it home. It makes a quick race feel like the gully final.
+
+## Why local first
+
+Local play costs players nothing, needs no sign-in and keeps working when the network does not. It also fits how people already play games together here: phones out, sitting next to each other, shouting.
+
+[Read about the city you race through](../building-an-indian-city-every-run/) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).
+
+### Ten heroes, ten desi emergencies
+https://gamedevuppsala-glitch.github.io/viidesi-studios/devlog/ten-heroes-ten-emergencies/
+A runner needs a reason to run. In Chhatpat! every hero has a small, very Indian emergency and a clock, and every story plays out like a filmi scene. Here is the parivaar.
+
+## The ten stories
+
+- **Aarav, "Home Alone".** Riya's parents are out. For now. *22. BA pass (third attempt). Hopeless romantic.*
+- **Raju, "10-Minute Delivery".** One order. One address. One very specific item. *4.9 stars. Zero chill. Never checks the package.*
+- **Golu, "Howzat".** One six. One window. One very angry Sharma Uncle. *Age 9. Batting average 3. Window average 100%.*
+- **Bunty, "Rishta Runner".** Aunty Ji arranged a rishta. The gully final starts in five. *Opening batsman. Runaway groom. Still in the sherwani.*
+- **Kamla Dadi, "Prime Time".** Power cut. Her serial starts in minutes. The neighbour has a generator. *78. Bad knee. Has not missed an episode since 2003.*
+- **Pappu, "Band Baaja Bhaag".** The baraat can't move without its dhol. The dhol is Pappu. *300 weddings. One dhol. Zero days off.*
+- **Sweety, "Golden Hour".** Golden hour lasts twenty minutes. The brand deal needs one selfie. *1.2M followers. 14 ring lights.*
+- **Mummy, "Cooker ki Seeti".** Three seetis done. The fourth one takes the ceiling. *Kitty party queen. Housie champion. Dal in mortal danger.*
+- **Munna, "Sulabh Sprint".** Sharma Aunty's rajma. One working toilet. 1.4 km.
+- **Tinku, "Forwarded Many Times".** Chacha forwarded a scam to 212 groups. Delete it before Dadi reads it. *19. Family IT department. Unpaid. Unstoppable.*
+
+## Every hero has a move
+
+Each hero brings a special move to the run, like the **Dhol Blast**, the **Paan Pichkaari** or a well-timed **"Khana Khaya?"**. On top of that come the three power-ups anyone can use: the **patang** to glide over the roofs, **chai** to sprint and the **gulel** to swing up to the highest point ahead.
+
+## English or Desi
+
+Every line in the game can be read in plain English or in **Desi** mode, which is Hinglish full of pop-culture references. Try the English | Desi switch at the top of this site to get a taste.
+
+[Meet the heroes on the game page](../../chhatpat/#stories) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).
