@@ -1,0 +1,72 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { GAME, u } from '../site.config';
+import { game, faqPage, breadcrumbs } from '../lib/schema';
+import panCity from '../assets/shots/pan-city.jpg';
+const faq = [
+  { q: 'छतपट (Chhatpat) क्या है?', a: 'छतपट! एक मुफ़्त भारतीय मोबाइल गेम है, जिसमें आप एक देसी शहर की छतों पर दौड़ते, कूदते और चढ़ते हैं। इसे Viidesi Studios ने भारत में बनाया है।' },
+  { q: 'क्या छतपट मुफ़्त है?', a: 'हाँ, छतपट Google Play पर मुफ़्त है। कोई पॉप-अप विज्ञापन नहीं, विज्ञापन सिर्फ़ शहर के होर्डिंग पर दिखते हैं।' },
+  { q: 'क्या छतपट बिना इंटरनेट चलता है?', a: 'हाँ, पूरा गेम ऑफ़लाइन चलता है। दोस्तों के साथ खेलने के लिए भी इंटरनेट नहीं चाहिए, बस एक ही Wi-Fi या फ़ोन हॉटस्पॉट।' },
+  { q: 'दोस्तों के साथ कैसे खेलें?', a: 'एक फ़ोन गेम होस्ट करता है और 5 अंकों का गेम ID पाता है। 3 दोस्त तक उसी Wi-Fi पर वह ID डालकर जुड़ते हैं और एक ही शहर में रेस लगाते हैं।' },
+];
+const schema = [game(['og/chhatpat.jpg'], { url: 'media/chhatpat-trailer.mp4', poster: 'media/chhatpat-trailer-poster-clean.jpg' }), faqPage(faq), breadcrumbs([{ name: 'Viidesi Studios', path: '' }, { name: 'हिंदी', path: 'hi/' }])];
+---
+<Base lang="hi" path="hi/" title="छतपट! देसी रूफ़टॉप रन: भारत का अपना छत पर दौड़ने वाला मुफ़्त गेम" description="छतपट! एक मुफ़्त भारतीय मोबाइल गेम है। हर बार नया देसी शहर, पतंग, चाय, गुलेल, 10 हीरो और बिना इंटरनेट 4 दोस्तों के साथ Wi-Fi पर रेस। Android पर अभी खेलें।" keywords="छतपट, छतपट गेम, भारतीय गेम, देसी गेम, मोबाइल गेम, ऑफ़लाइन गेम, पतंग गेम, दिवाली गेम, Chhatpat" schema={schema}>
+  <section class="hih" aria-labelledby="hi-h">
+    <Picture class="hih-bg" src={panCity} formats={['avif', 'webp']} widths={[768, 1280, 1920]} sizes="100vw" alt="" loading="eager" />
+    <div class="wrap hih-in" data-enter>
+      <p class="eyebrow">Viidesi Studios</p>
+      <h1 id="hi-h" class="deva"><span class="accent">छतपट!</span> छत पर दौड़ने वाला देसी गेम</h1>
+      <p class="lede">हर रन में नया भारतीय शहर। पतंग उड़ाओ, चाय पियो, अंकल जी से बचो, और बिना इंटरनेट 4 दोस्तों के साथ एक ही Wi-Fi पर रेस लगाओ। Android पर मुफ़्त।</p>
+      <a class="btn" href={GAME.play} rel="noopener" data-magnet><Icon name="play-store" /> Google Play पर पाएं</a>
+    </div>
+  </section>
+  <section aria-labelledby="hi-f">
+    <div class="wrap hi-grid">
+      <h2 id="hi-f" class="deva" data-reveal>गेम में क्या है</h2>
+      <ul class="hi-list">
+        <li><strong>हर बार नया शहर:</strong> हवेलियाँ, चॉल, बाज़ार, गलियाँ, मंदिर, मस्जिद, गुरुद्वारे और बावड़ियाँ।</li>
+        <li><strong>लाल किला, क़ुतुब मीनार, इंडिया गेट</strong>, हुमायूँ का मक़बरा, जामा मस्जिद, अक्षरधाम, लोटस टेम्पल और अग्रसेन की बावली छतों के ऊपर।</li>
+        <li><strong>10 हीरो, 10 देसी मुसीबतें:</strong> कमला दादी का सीरियल, पप्पू की बारात, मम्मी के कुकर की सीटी।</li>
+        <li><strong>पतंग, चाय और गुलेल:</strong> तीन पावर-अप और गली में पड़े 12 तरह के बूस्ट।</li>
+        <li><strong>अपना घर:</strong> हर शहर में आपका घर, 284 चीज़ों से सजाओ।</li>
+        <li><strong>दोस्तों के साथ:</strong> 4 खिलाड़ी तक, एक ही Wi-Fi या हॉटस्पॉट, इंटरनेट नहीं चाहिए।</li>
+        <li><strong>55 कपड़े</strong>, हर एक की अपनी पावर। अंग्रेज़ी या देसी (हिंग्लिश) में खेलो।</li>
+        <li><strong>हर फ़ोन के लिए:</strong> 4 GB फ़ोन से फ़्लैगशिप तक, 5 ग्राफ़िक्स मोड, ऑफ़लाइन।</li>
+      </ul>
+    </div>
+  </section>
+  <section class="ground-indigo" aria-labelledby="hi-q">
+    <div class="wrap hi-grid">
+      <h2 id="hi-q" class="deva" data-reveal>सवाल-जवाब</h2>
+      <div>{faq.map((f) => <details><summary><h3>{f.q}</h3></summary><p>{f.a}</p></details>)}</div>
+    </div>
+  </section>
+  <section class="hi-close">
+    <div class="wrap" style="display:grid;justify-items:center;gap:24px;text-align:center">
+      <h2 class="deva">चलो, छत पे मिलते हैं</h2>
+      <a class="btn" href={GAME.play} rel="noopener"><Icon name="play-store" /> Google Play पर पाएं</a>
+      <a class="link" href={u()} hreflang="en">Read this page in English</a>
+    </div>
+  </section>
+</Base>
+<style>
+  .hih { min-height: 90svh; display: grid; align-items: end; overflow: hidden; padding-bottom: clamp(60px, 10vh, 110px) !important; }
+  .hih :global(.hih-bg), .hih :global(.hih-bg img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hih::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,13,38,.35), rgba(7,13,38,.95)); }
+  .hih-in { position: relative; z-index: 2; display: grid; gap: 22px; }
+  .hih-in .btn { justify-self: start; }
+  h1.deva, h2.deva { line-height: 1.25; letter-spacing: 0; font-weight: 400; }
+  h1.deva { font-size: clamp(2.6rem, 6.4vw, 5.8rem); max-width: 16ch; }
+  h2.deva { font-size: clamp(2.2rem, 4.6vw, 4rem); }
+  .hi-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .hi-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; font-size: 1.12rem; color: var(--muted); }
+  .hi-list strong { color: var(--saffron); }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; padding: 20px 0; min-height: 44px; }
+  summary h3 { display: inline; font: 700 1.2rem/1.4 var(--body); }
+  details p { padding-bottom: 20px; color: var(--muted); }
+  @media (max-width: 900px) { .hi-grid { grid-template-columns: 1fr; } }
+</style>

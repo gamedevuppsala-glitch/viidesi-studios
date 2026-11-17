@@ -1,0 +1,157 @@
+---
+import '../styles/global.css';
+import { SITE, GAME, u, abs } from '../site.config';
+import { graph } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string; // site-relative, e.g. 'chhatpat/'
+  image?: string; // site-relative OG image
+  lang?: 'en' | 'hi';
+  schema?: object[];
+  keywords?: string;
+  type?: 'website' | 'article' | 'video.other';
+  noindex?: boolean;
+  published?: string;
+}
+const {
+  title, description, path = '', image = 'og/home.jpg', lang = 'en', schema = [], keywords,
+  type = 'website', noindex = false, published,
+} = Astro.props;
+const canonical = abs(path);
+const ogImage = abs(image);
+const fullTitle = title.includes('Viidesi') ? title : `${title} | ${SITE.studio}`;
+const ld = JSON.stringify(graph(...schema));
+const current = Astro.url.pathname;
+const nav = [
+  { href: u('chhatpat/'), label: 'Chhatpat', desi: 'Chhatpat' },
+  { href: u('#heroes'), label: 'Heroes', desi: 'Parivaar' },
+  { href: u('studio/'), label: 'Studio', desi: 'Studio' },
+  { href: u('devlog/'), label: 'Devlog', desi: 'Devlog' },
+];
+---
+<!doctype html>
+<html lang={lang === 'hi' ? 'hi-IN' : 'en-IN'} data-type="software" data-desi="off">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  {keywords && <meta name="keywords" content={keywords} />}
+  <meta name="page-type" content="software" />
+  <meta name="site-kind" content="gaming" />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+  <link rel="alternate" hreflang="en-IN" href={abs('')} />
+  <link rel="alternate" hreflang="hi-IN" href={abs('hi/')} />
+  <link rel="alternate" hreflang="x-default" href={abs('')} />
+  <meta name="theme-color" content="#070d26" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="author" content={SITE.studio} />
+  <meta name="application-name" content={GAME.name} />
+  <meta name="apple-mobile-web-app-title" content={GAME.plain} />
+  <meta name="google-play-app" content={`app-id=${GAME.packageId}`} />
+  <meta name="geo.region" content="IN" />
+
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content={SITE.studio} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Chhatpat! a desi rooftop run, by Viidesi Studios" />
+  <meta property="og:locale" content={lang === 'hi' ? 'hi_IN' : 'en_IN'} />
+  <meta property="og:locale:alternate" content={lang === 'hi' ? 'en_IN' : 'hi_IN'} />
+  <meta property="og:video" content={abs('media/chhatpat-trailer.mp4')} />
+  <meta property="og:video:type" content="video/mp4" />
+  {published && <meta property="article:published_time" content={published} />}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <link rel="icon" href={u('favicon.ico')} sizes="32x32" />
+  <link rel="icon" href={u('brand/icon-192.png')} type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href={u('brand/apple-touch-icon.png')} />
+  <link rel="manifest" href={u('site.webmanifest')} />
+  <link rel="alternate" type="text/plain" title="LLM summary" href={u('llms.txt')} />
+  <link rel="sitemap" href={u('sitemap-index.xml')} />
+  <script type="application/ld+json" set:html={ld} />
+  <script is:inline>document.documentElement.classList.add('js');try{if(localStorage.getItem('chhat-desi')==='on')document.documentElement.dataset.desi='on'}catch(e){}</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href={u()} aria-label="Viidesi Studios home">
+        <img src={u('brand/icon-192.png')} alt="" width="36" height="36" />
+        <span>Viidesi<small>Studios</small></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        {nav.map((n) => (
+          <li><a href={n.href} aria-current={current === n.href ? 'page' : undefined} data-desi-text={n.desi}>{n.label}</a></li>
+        ))}
+      </ul>
+      <div class="lang" role="group" aria-label="Site language style">
+        <button type="button" data-lang="off" aria-pressed="true">English</button>
+        <button type="button" data-lang="on" aria-pressed="false">Desi</button>
+      </div>
+      <a class="btn small nav-cta" href={GAME.play} rel="noopener" data-desi-text="Abhi khelo">Get it on Google Play</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href={u()}><img src={u('brand/icon-192.png')} alt="" width="36" height="36" /><span>Viidesi<small>Studios</small></span></a>
+          <p style="color:var(--muted);margin-top:18px;max-width:36ch">An independent Indian game studio. Games by India, for India. Chhatpat! is our first.</p>
+        </div>
+        <div>
+          <h3>Chhatpat</h3>
+          <ul>
+            <li><a class="link" href={u('chhatpat/')}>The game</a></li>
+            <li><a class="link" href={u('chhatpat/#press')}>Press kit</a></li>
+            <li><a class="link" href={u('chhatpat/#faq')}>Questions</a></li>
+            <li><a class="link" href={GAME.play} rel="noopener">Google Play</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Studio</h3>
+          <ul>
+            <li><a class="link" href={u('studio/')}>About Viidesi</a></li>
+            <li><a class="link" href={u('studio/#brands')}>Brands in the city</a></li>
+            <li><a class="link" href={u('devlog/')}>Devlog</a></li>
+            <li><a class="link" href={u('hi/')} hreflang="hi">हिंदी</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a class="link" href={`mailto:${SITE.email}`}>Email the studio</a></li>
+            <li><a class="link" href={u('privacy/')}>Privacy policy</a></li>
+            <li><a class="link" href={u('llms.txt')}>llms.txt</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-word" aria-hidden="true">chhat pe milte hain</div>
+      <div class="foot-base">
+        <span>© {new Date().getFullYear()} Viidesi Studios. Made in India. Chhatpat! is a trademark of Viidesi Studios.</span>
+        <span>Google Play and the Google Play logo are trademarks of Google LLC.</span>
+      </div>
+    </div>
+  </footer>
+  <script>
+    import { boot } from '../scripts/motion';
+    boot();
+  </script>
+</body>
+</html>

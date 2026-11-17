@@ -1,0 +1,124 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import { SITE, GAME, u, abs } from '../site.config';
+import { breadcrumbs, faqPage } from '../lib/schema';
+import panDiwali from '../assets/shots/pan-diwali.jpg';
+import shotCity from '../assets/shots/screenshot-05-city.jpg';
+import huddle from '../assets/shots/huddle.jpg';
+
+const studioFaq = [
+  { q: 'What is Viidesi Studios?', a: 'Viidesi Studios is an independent video game studio from India. It makes games by India, for India, starting with Chhatpat!, a desi rooftop parkour game for Android.' },
+  { q: 'What games has Viidesi Studios made?', a: 'Chhatpat! Desi Rooftop Run is the first, free on Google Play. More games are in development.' },
+  { q: 'How can a brand advertise inside Chhatpat?', a: 'Chhatpat’s city carries thousands of in-world hoardings, wall paints, banners and LED screens, plus weekly brand hunts where players search the city for hidden items. Adverts are part of the world, never pop-ups. Email the studio to plan a campaign.' },
+  { q: 'Is Viidesi Studios hiring or open to collaborations?', a: 'The studio is small and open to talking with artists, musicians, voice actors and other Indian creators. Email the studio with your work.' },
+];
+const schema = [breadcrumbs([{ name: 'Viidesi Studios', path: '' }, { name: 'Studio', path: 'studio/' }]), faqPage(studioFaq), { '@type': 'AboutPage', name: 'About Viidesi Studios', url: abs('studio/'), about: { '@id': abs('#organization') } }];
+const brandWays = [
+  { k: 'Hoardings', h: 'Roof hoardings and wall paints', p: 'Boards on roofs, painted walls, banners and posters along the streets players run past. One measured city carried about 2,900 boards.' },
+  { k: 'LED screens', h: 'Animated video screens', p: 'Short films on LED screens in the city, readable on a phone from about 14 metres.' },
+  { k: 'Brand hunts', h: 'Weekly brand hunts', p: 'Your product hidden around the city for a week. Players hunt it down for rewards.' },
+];
+---
+<Base
+  title="Viidesi Studios: an independent Indian game studio making games by India, for India"
+  description="Viidesi Studios is an independent video game studio from India. Our first game is Chhatpat!, a desi rooftop parkour game. Brands can advertise on in-world billboards and brand hunts."
+  path="studio/"
+  image="og/studio.jpg"
+  keywords="Viidesi Studios, Indian game studio, Indian game developer, indie game studio India, mobile game studio India, in-game advertising India, advertise in mobile games"
+  schema={schema}
+>
+  <section class="shero" aria-labelledby="s-h">
+    <Picture class="shero-bg" src={panDiwali} formats={['avif', 'webp']} widths={[768, 1280, 1920]} sizes="100vw" alt="" loading="eager" />
+    <div class="wrap shero-inner" data-enter>
+      <p class="eyebrow">Viidesi Studios</p>
+      <h1 id="s-h">An Indian game studio making games by India, for India</h1>
+      <p class="lede">An independent studio with one game out and more on the way. Our first, Chhatpat!, is free on Google Play.</p>
+      <div class="row">
+        <a class="btn" href={`mailto:${SITE.email}?subject=Hello%20Viidesi`} data-magnet><Icon name="mail" /> Email the studio</a>
+        <a class="btn ghost" href={u('chhatpat/')}>See Chhatpat</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="belief" aria-labelledby="b-h">
+    <div class="wrap belief-grid">
+      <h2 id="b-h" data-reveal>The India outside the window, in a game</h2>
+      <div class="belief-copy">
+        <p class="big">Games set in India often look like a museum or a postcard. We make the real, noisy, loving India of right now: the WhatsApp forward, the power cut before the serial, the cow that will not move.</p>
+        <p>Our games are built for the phones people in India actually own. Chhatpat runs on 4 GB phones as well as flagships, plays offline, and lets friends play together on one Wi-Fi with no data. Every sign, snack and costume comes from home.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slate ground-indigo" aria-labelledby="slate-h">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Games</p><h2 id="slate-h" data-reveal>Our games</h2></div>
+      <div class="slate-grid">
+        <a class="game frame zoom" href={u('chhatpat/')}>
+          <Picture src={shotCity} formats={['avif', 'webp']} widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 60vw" alt="Chhatpat's procedurally built Indian city with a temple and coloured houses" />
+          <span class="game-info"><span class="tag">Out now · Android</span><strong>Chhatpat! Desi Rooftop Run</strong></span>
+        </a>
+        <div class="game next">
+          <span class="tag">In development</span>
+          <strong>Game two</strong>
+          <p>Something new is being built. Follow the devlog for the first look.</p>
+          <a class="link accent" href={u('devlog/')}>Read the devlog →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="brands" class="brands" aria-labelledby="brands-h">
+    <div class="wrap">
+      <div class="brand-top">
+        <div class="sec-head">
+          <p class="eyebrow">For brands</p>
+          <h2 id="brands-h" data-reveal>Advertise inside Chhatpat's city</h2>
+          <p class="lede">Chhatpat has no pop-up ads. Brands appear the way they do on a real Indian street: on the hoardings, walls and screens of the city itself, seen by players running past.</p>
+          <a class="btn" href={`mailto:${SITE.email}?subject=Advertising%20in%20Chhatpat`} data-magnet><Icon name="mail" /> Plan a campaign</a>
+        </div>
+        <div class="frame zoom brand-img"><Picture src={huddle} formats={['avif', 'webp']} widths={[640, 1000]} sizes="(max-width: 900px) 100vw, 45vw" alt="People chatting in a street in Chhatpat with shop signs around them" /></div>
+      </div>
+      <div class="ways">
+        {brandWays.map((w) => (
+          <article class="way"><span class="card-k">{w.k}</span><h3>{w.h}</h3><p>{w.p}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Faq items={studioFaq} id="studio-faq" title="Questions about Viidesi" />
+</Base>
+
+<style>
+  .shero { min-height: 88svh; display: grid; align-items: end; overflow: hidden; padding-bottom: clamp(60px, 10vh, 110px) !important; }
+  .shero :global(.shero-bg), .shero :global(.shero-bg img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .shero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,13,38,.3), rgba(7,13,38,.95)); }
+  .shero-inner { position: relative; z-index: 2; display: grid; gap: 22px; }
+  .shero h1 { font-size: clamp(2.6rem, 6.4vw, 6rem); max-width: 16ch; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .belief-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .belief-copy { display: grid; gap: 20px; color: var(--muted); font-size: 1.1rem; }
+  .belief-copy .big { font: 600 clamp(1.4rem, 2.2vw, 2rem)/1.3 var(--display); color: var(--cream); }
+  .slate-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 20px; }
+  .game { position: relative; min-height: 440px; border-radius: var(--r-l); display: block; text-decoration: none; }
+  .game :global(img) { position: absolute; inset: 0; }
+  .game-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 28px; display: grid; gap: 8px; background: linear-gradient(transparent, rgba(7,13,38,.92)); }
+  .game strong { font: 800 clamp(1.6rem, 2.6vw, 2.4rem)/1 var(--display); letter-spacing: -.02em; }
+  .tag { justify-self: start; display: inline-block; padding: 6px 12px; border-radius: 999px; background: var(--saffron); color: var(--ink); font-size: .8rem; font-weight: 800; }
+  .next { padding: 32px; display: grid; align-content: end; gap: 14px; background: repeating-linear-gradient(135deg, rgba(255,244,226,.05) 0 14px, transparent 14px 28px), var(--card); box-shadow: inset 0 0 0 1.5px var(--line); }
+  .next .tag { background: var(--teal); }
+  .next p { color: var(--muted); }
+  .brand-top { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .brand-top .sec-head { margin-bottom: 0; }
+  .brand-top .btn { justify-self: start; }
+  .brand-img { aspect-ratio: 4/3; }
+  .ways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: clamp(48px, 7vw, 90px); }
+  .way { padding: 30px; border-radius: var(--r-l); background: var(--card); box-shadow: inset 0 0 0 1px var(--line); display: grid; gap: 10px; align-content: start; }
+  .way p { color: var(--muted); }
+  .card-k { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); }
+  @media (max-width: 900px) { .belief-grid, .slate-grid, .brand-top, .ways { grid-template-columns: 1fr; } .game { min-height: 300px; } }
+</style>

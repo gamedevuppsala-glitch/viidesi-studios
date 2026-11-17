@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { u, abs, SITE } from '../../site.config';
+import { breadcrumbs } from '../../lib/schema';
+const posts = (await getCollection('devlog')).sort((a, b) => +b.data.date - +a.data.date);
+const fmt = (d: Date) => d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+const schema = [
+  breadcrumbs([{ name: 'Viidesi Studios', path: '' }, { name: 'Devlog', path: 'devlog/' }]),
+  { '@type': 'Blog', '@id': abs('devlog/#blog'), name: 'Viidesi Studios devlog', url: abs('devlog/'), publisher: { '@id': abs('#organization') },
+    blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.data.title, url: abs(`devlog/${p.id}/`), datePublished: p.data.date.toISOString() })) },
+];
+---
+<Base title="Devlog: how Chhatpat! is made" description="Notes from Viidesi Studios on making Chhatpat!: building a procedural Indian city, offline Wi-Fi multiplayer, the ten heroes and more." path="devlog/" image="og/devlog.jpg" schema={schema}>
+  <section class="dl-head">
+    <div class="wrap" data-enter>
+      <p class="eyebrow">Devlog</p>
+      <h1>How Chhatpat is made: the devlog</h1>
+      <p class="lede">Notes from the studio on building a desi city, a game for every phone and the people who run through it.</p>
+    </div>
+  </section>
+  <section class="dl-list" aria-label="Posts">
+    <div class="wrap">
+      <ul class="posts">
+        {posts.map((p, i) => (
+          <li class={i === 0 ? 'first' : ''}>
+            <a class="post" href={u(`devlog/${p.id}/`)}>
+              <span class="frame post-img"><img src={u(p.data.cover)} alt={p.data.coverAlt} loading={i === 0 ? 'eager' : 'lazy'} width="1200" height="675" /></span>
+              <span class="post-meta"><time datetime={p.data.date.toISOString()}>{fmt(p.data.date)}</time> · {p.data.tags.slice(0, 2).join(', ')}</span>
+              <h2>{p.data.title}</h2>
+              <p>{p.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+<style>
+  .dl-head { padding-top: calc(var(--nav-h) + 80px) !important; padding-bottom: 40px !important; }
+  .dl-head .wrap { display: grid; gap: 20px; }
+  .dl-head h1 { font-size: clamp(2.8rem, 7vw, 6.4rem); max-width: 14ch; }
+  .dl-list { padding-top: 40px !important; }
+  .posts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px 32px; }
+  .posts .first { grid-column: 1 / -1; }
+  .post { display: grid; gap: 14px; text-decoration: none; }
+  .post-img { aspect-ratio: 16 / 9; display: block; }
+  .post:hover :global(img) { transform: scale(1.03); }
+  .post h2 { font-size: clamp(1.6rem, 2.6vw, 2.4rem); transition: color .2s; }
+  .first .post h2 { font-size: clamp(2rem, 4vw, 3.6rem); }
+  .post:hover h2 { color: var(--saffron); }
+  .post p { color: var(--muted); max-width: 60ch; }
+  .post-meta { font-size: .85rem; color: var(--teal); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+  @media (max-width: 820px) { .posts { grid-template-columns: 1fr; } }
+</style>

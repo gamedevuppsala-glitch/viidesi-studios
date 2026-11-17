@@ -1,0 +1,58 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { u, abs, GAME, SITE } from '../../site.config';
+import { breadcrumbs } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('devlog');
+  return posts.map((p) => ({ params: { slug: p.id }, props: { post: p } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const path = `devlog/${post.id}/`;
+const others = (await getCollection('devlog')).filter((p) => p.id !== post.id);
+const schema = [
+  breadcrumbs([{ name: 'Viidesi Studios', path: '' }, { name: 'Devlog', path: 'devlog/' }, { name: post.data.title, path }]),
+  {
+    '@type': 'BlogPosting', headline: post.data.title, description: post.data.description, url: abs(path), mainEntityOfPage: abs(path),
+    datePublished: post.data.date.toISOString(), dateModified: post.data.date.toISOString(), image: abs(post.data.cover), keywords: post.data.tags.join(', '),
+    author: { '@id': abs('#organization') }, publisher: { '@id': abs('#organization') }, about: { '@id': abs('chhatpat/#game') }, inLanguage: 'en-IN',
+  },
+];
+const fmt = (d: Date) => d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title={post.data.title} description={post.data.description} path={path} image={post.data.cover} type="article" published={post.data.date.toISOString()} schema={schema} keywords={post.data.tags.join(', ')}>
+  <article class="art">
+    <header class="wrap art-head" data-enter>
+      <nav class="crumbs" aria-label="Breadcrumb"><a class="link" href={u('devlog/')}>Devlog</a> / <time datetime={post.data.date.toISOString()}>{fmt(post.data.date)}</time></nav>
+      <h1>{post.data.title}</h1>
+      <p class="lede">{post.data.description}</p>
+    </header>
+    <div class="wrap"><div class="frame art-cover"><img src={u(post.data.cover)} alt={post.data.coverAlt} width="1920" height="1080" fetchpriority="high" /></div></div>
+    <div class="wrap"><div class="prose"><Content /></div></div>
+    <aside class="wrap art-cta">
+      <h2>Play Chhatpat free on Android</h2>
+      <a class="btn" href={GAME.play} rel="noopener"><Icon name="play-store" /> Get it on Google Play</a>
+    </aside>
+    <nav class="wrap more" aria-label="More posts">
+      <h2>More from the devlog</h2>
+      <ul>{others.map((p) => <li><a class="link" href={u(`devlog/${p.id}/`)}>{p.data.title}</a></li>)}</ul>
+    </nav>
+  </article>
+</Base>
+<style>
+  .art { padding-top: calc(var(--nav-h) + 72px); padding-bottom: 80px; }
+  .art-head { display: grid; gap: 20px; max-width: 980px; }
+  .art-head h1 { font-size: clamp(2.4rem, 5.4vw, 4.8rem); }
+  .crumbs { color: var(--muted); font-size: .9rem; }
+  .art-cover { aspect-ratio: 16/9; margin: 48px 0; }
+  .prose { margin-inline: auto; }
+  .art-cta { margin-top: 64px; padding: 40px; border-radius: var(--r-l); background: linear-gradient(120deg, rgba(255,138,31,.2), rgba(255,61,139,.14)); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; }
+  .art-cta h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+  .more { margin-top: 64px; }
+  .more h2 { font-size: 1.4rem; margin-bottom: 16px; }
+  .more ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .more a { font-weight: 600; display: inline-flex; min-height: 44px; align-items: center; }
+</style>

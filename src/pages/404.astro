@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../site.config';
+---
+<Base title="Page not found" description="This page fell into a gully. Head back to the rooftops." path="404/" noindex>
+  <section class="nf">
+    <div class="wrap nf-in" data-enter>
+      <p class="eyebrow">404</p>
+      <h1>This page fell into a gully</h1>
+      <p class="lede">Arre! Wrong roof. The page you wanted is not here.</p>
+      <a class="btn" href={u()}>Go back to the home page</a>
+    </div>
+  </section>
+</Base>
+<style>
+  .nf { min-height: 90svh; display: grid; align-items: center; }
+  .nf-in { display: grid; gap: 22px; justify-items: start; }
+  .nf h1 { font-size: clamp(2.8rem, 8vw, 7rem); max-width: 12ch; }
+</style>

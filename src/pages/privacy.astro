@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site.config';
+// Copied from PRIVACY_POLICY.md in the game repo (last updated 21 October 2026). Keep the two in sync.
+---
+<Base title="Chhatpat! privacy policy" description="What information Chhatpat! handles: progress on your device, optional Google Play Games sign-in, and in-city advertising without tracking." path="privacy/">
+  <section style="padding-top:calc(var(--nav-h) + 72px)">
+    <div class="wrap">
+      <div class="prose">
+        <p class="eyebrow">Privacy</p>
+        <h1 style="font-size:clamp(2.4rem,5vw,4.4rem);margin:16px 0 8px">Chhatpat! privacy policy</h1>
+        <p><em>Last updated: 21 October 2026</em></p>
+        <p>Chhatpat! ("the game") is made by {SITE.studio}, an independent developer, contactable at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. This policy explains what information the game handles.</p>
+        <h2>What stays on your device</h2>
+        <p>Your progress stays in the game's own storage on your phone. That covers your level, coins, outfits, stories, puzzle pieces, settings, brand-hunt progress, and how long each in-game advert was on screen. The developer does not receive it.</p>
+        <h2>Google Play Games (optional)</h2>
+        <p>If you sign in with Google Play Games, the game uses Google's services to:</p>
+        <ul>
+          <li>show your Play Games profile name and avatar in the game;</li>
+          <li>unlock achievements and record them on your Play Games profile;</li>
+          <li>save a copy of your progress to your Google account (Saved Games), so you can carry on on another device.</li>
+        </ul>
+        <p>Google processes this data under the <a href="https://policies.google.com/privacy" rel="noopener">Google Privacy Policy</a>. The developer does not get your email address, contacts, or any other account data. You can play without signing in, and you can delete your Play Games data from the Google Play Games app.</p>
+        <h2>In-game advertising</h2>
+        <p>The game shows adverts on billboards, posters, banners and screens inside its cities, and may run brand hunts. To get the current adverts it contacts two kinds of server:</p>
+        <ul>
+          <li><strong>The studio's own advert file:</strong> a list of adverts and their pictures. As with any download, that server sees your device's IP address. The game sends nothing else.</li>
+          <li><strong>Google Ad Manager:</strong> an advertising service run by Google. The game asks it for adverts and tells it when an advert was seen. Google receives your device's IP address, the app's name and the request itself. The game asks only for non-personalised ads. It sends no advertising ID, no location and nothing about you or how you play. Google's handling of this data is described at <a href="https://policies.google.com/technologies/ads" rel="noopener">policies.google.com/technologies/ads</a>.</li>
+        </ul>
+        <p>Adverts in the cities cannot be tapped, and the game does no tracking of its own.</p>
+        <h2>Children</h2>
+        <p>The game is not directed at children under 13 and does not knowingly collect personal information from them.</p>
+        <h2>Changes and contact</h2>
+        <p>Changes to this policy will be posted on this page with a new date. For questions or deletion requests, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+      </div>
+    </div>
+  </section>
+</Base>

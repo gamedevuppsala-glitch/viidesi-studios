@@ -1,0 +1,209 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import Heroes from '../components/Heroes.astro';
+import Icon from '../components/Icon.astro';
+import { GAME, SITE, u } from '../site.config';
+import { LANDMARKS, PLACES, FAQ, HEROES } from '../data/game';
+import { game, faqPage, breadcrumbs } from '../lib/schema';
+import panCity from '../assets/shots/pan-city.jpg';
+import shotRun from '../assets/shots/screenshot-01-run.jpg';
+import shotKite from '../assets/shots/screenshot-03-kite.jpg';
+import shotMohalla from '../assets/shots/screenshot-04-mohalla.jpg';
+import shotDiwali from '../assets/shots/screenshot-02-diwali.jpg';
+
+const shots = ['press/chhatpat-screenshot-01-run.jpg', 'press/chhatpat-screenshot-03-kite.jpg', 'press/chhatpat-screenshot-05-city.jpg', 'press/chhatpat-screenshot-02-diwali.jpg'];
+const schema = [
+  game(shots, { url: 'media/chhatpat-trailer.mp4', poster: 'media/chhatpat-trailer-poster-clean.jpg' }),
+  faqPage(FAQ),
+  breadcrumbs([{ name: 'Viidesi Studios', path: '' }, { name: 'Chhatpat!', path: 'chhatpat/' }]),
+];
+const features = [
+  { h: 'Rooftop parkour', p: 'Sprint from chhat to chhat, leap across gullies, climb the green pipes, catch ledges, slide under washing lines and air-dash over gaps. Pick a lock, walk in through a front door and out the back.' },
+  { h: 'Errands against the clock', p: 'Run to the kirana, the halwai, the chemist and the darzi before time runs out. Every hero’s story is a timed filmi emergency.' },
+  { h: 'Patang, chai, gulel', p: 'Ride a kite over the roofs, gulp chai to run faster, fire the gulel to swing to the highest point ahead, and grab 12 kinds of street boosts.' },
+  { h: 'Play with friends, offline', p: 'Up to 4 players on the same Wi-Fi or a phone hotspot. Host a game, share the 5-digit ID, race the same errand in one shared city. Winner takes the pot.' },
+  { h: 'Your own ghar', p: 'Your house stands in every city and every run starts on its terrace. Decorate it with 284 things you find out in the city.' },
+  { h: "Today's City", p: 'Every day everyone gets the same city and the same race. Set your best time before a new city arrives at midnight. The week’s best become the Shehar ke Sher.' },
+  { h: 'Dukaan and outfits', p: '55 outfits, from the Neon Kurta to the Superhero Lungi and Gold Chain Bhai. Every outfit brings its own power. Take a start kit of boosts into a run.' },
+  { h: 'Puzzles and badges', p: 'Golden puzzle pieces hidden off the route complete picture puzzles and win new stories and outfits. 20 achievements, leaderboards and cloud save with Google Play Games.' },
+  { h: 'Difficulty your way', p: 'Aaram Se, Josh Mein, Khatarnaak, or Apna Level, which learns how you play.' },
+  { h: 'Controls your way', p: 'Joystick, gyro, a left-handed layout, buttons you can drag where you like, and full gamepad support with Xbox, PlayStation and Nintendo glyphs.' },
+  { h: 'English or Desi', p: 'Play in plain English, or in Desi mode: Hinglish full of pop-culture references.' },
+  { h: 'Built for every phone', p: 'Five graphics modes, from Smooth for 4 GB phones to Ultra for flagships, and 30 to 144 FPS. No pop-up ads: adverts appear only on the city’s own billboards.' },
+];
+const sheet = [
+  ['Title', 'Chhatpat! Desi Rooftop Run'],
+  ['Developer and publisher', SITE.studio + ', India'],
+  ['Platform', 'Android 8.0 or newer (phones and tablets)'],
+  ['Price', 'Free'],
+  ['Genre', 'Rooftop parkour, runner, open city'],
+  ['Players', '1, or 2 to 4 on the same Wi-Fi'],
+  ['Languages', 'English and Desi (Hinglish)'],
+  ['Engine', 'Unity 6, Universal Render Pipeline'],
+  ['Current version', GAME.version],
+  ['Package', GAME.packageId],
+];
+const press = [
+  ['chhatpat-screenshot-01-run.jpg', 'Rooftop run'], ['chhatpat-screenshot-02-diwali.jpg', 'Diwali Mela'], ['chhatpat-screenshot-03-kite.jpg', 'Patang'],
+  ['chhatpat-screenshot-04-mohalla.jpg', 'The mohalla'], ['chhatpat-screenshot-05-city.jpg', 'A new city'], ['chhatpat-screenshot-06-friends.jpg', 'Play with friends'],
+  ['chhatpat-screenshot-07-ghar.jpg', 'Ghar'], ['chhatpat-screenshot-08-heroes.jpg', 'Heroes'], ['chhatpat-city-panorama.jpg', 'City panorama'],
+  ['chhatpat-diwali-panorama.jpg', 'Diwali panorama'], ['chhatpat-feature-graphic-1024x500.jpg', 'Feature graphic'], ['chhatpat-icon-1024.png', 'App icon, 1024 px'],
+];
+---
+<Base
+  title="Chhatpat! game: rooftop parkour in an Indian city, features, heroes and press kit"
+  description="Everything about Chhatpat!, the free desi rooftop parkour game for Android: a new Indian city every run, 10 heroes, offline play with 4 friends on Wi-Fi, landmarks, outfits, fact sheet and press kit."
+  path="chhatpat/"
+  image="og/chhatpat.jpg"
+  keywords="Chhatpat game, Chhatpat Android, Chhatpat download, Chhatpat press kit, Indian parkour game, desi runner game, Indian city game, offline multiplayer game India, kite flying game, Diwali game Android"
+  schema={schema}
+>
+  <section class="ghero" aria-labelledby="g-h">
+    <Picture class="ghero-bg" src={panCity} formats={['avif', 'webp']} widths={[768, 1280, 1920]} sizes="100vw" alt="" loading="eager" fetchpriority="high" />
+    <div class="wrap ghero-inner" data-enter>
+      <nav aria-label="Breadcrumb" class="crumbs"><a class="link" href={u()}>Viidesi Studios</a> / <span>Chhatpat!</span></nav>
+      <h1 id="g-h"><span class="accent">Chhatpat!</span> A rooftop parkour game set in a desi city</h1>
+      <p class="lede">Free for Android, made in India. Version {GAME.version}. Every run builds a new city of havelis, chawls, bazaars and stepwells, and you choose your own way across its roofs.</p>
+      <div class="row">
+        <a class="btn" href={GAME.play} rel="noopener" data-magnet><Icon name="play-store" /> Get it on Google Play</a>
+        <a class="btn ghost" href="#press"><Icon name="download" /> Get the press kit</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" aria-labelledby="about-h">
+    <div class="wrap about-grid">
+      <div class="sec-head">
+        <p class="eyebrow">The game</p>
+        <h2 id="about-h" data-reveal>Chhatpat in one minute</h2>
+      </div>
+      <div class="about-copy">
+        <p class="big">Chhatpat! is a game by India, for India. Not a postcard India: the one outside your window right now, with chai on the boil, a baraat blocking the road, aunties drying papad on the roof and kites crossing the evening sky.</p>
+        <p>You play one of ten heroes, each with a filmi emergency and a clock. Kamla Dadi will not miss episode 4,512 of her serial. Pappu's baraat cannot move without his dhol. Mummy's pressure cooker is on its third seeti. To get there in time you run the rooftops: no lanes, no rails, just the whole city and whatever route you can find through it.</p>
+        <p>Every run builds a brand-new city of havelis, chawls, temples, masjids, gurudwaras and stepwells, painted with over 400 hand-made Indian surfaces from jaali to Ajrakh. Landmarks rise over the roofs: {LANDMARKS.join(', ')}. The streets are full of chaiwalas, golgappe wale and dabbawalas, autos below and sky buses above.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="feat ground-indigo" aria-labelledby="feat-h">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Features</p><h2 id="feat-h" data-reveal>Twelve things in the game</h2></div>
+      <div class="feat-grid">
+        {features.map((f, i) => (
+          <article class="fcard"><span class="fn">{String(i + 1).padStart(2, '0')}</span><h3>{f.h}</h3><p>{f.p}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" aria-labelledby="gal-h">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Screens</p><h2 id="gal-h" data-reveal>Screenshots from the game</h2></div>
+      <div class="gal">
+        <a class="frame zoom g1" href={u('press/chhatpat-screenshot-01-run.jpg')}><Picture src={shotRun} formats={['avif', 'webp']} widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 60vw" alt="Chhatpat gameplay: running across a roof with a timer, coins and a temple in the distance" /></a>
+        <a class="frame zoom g2" href={u('press/chhatpat-screenshot-03-kite.jpg')}><Picture src={shotKite} formats={['avif', 'webp']} widths={[640, 1000]} sizes="(max-width: 900px) 100vw, 40vw" alt="Flying a patang over the rooftops in Chhatpat" /></a>
+        <a class="frame zoom g3" href={u('press/chhatpat-screenshot-04-mohalla.jpg')}><Picture src={shotMohalla} formats={['avif', 'webp']} widths={[640, 1000]} sizes="(max-width: 900px) 100vw, 40vw" alt="The mohalla in Chhatpat: aunties, uncles and monkeys on the roofs" /></a>
+        <a class="frame zoom g4" href={u('press/chhatpat-screenshot-02-diwali.jpg')}><Picture src={shotDiwali} formats={['avif', 'webp']} widths={[640, 1280]} sizes="(max-width: 900px) 100vw, 60vw" alt="Diwali Mela in Chhatpat with lights on every roof and fireworks" /></a>
+      </div>
+    </div>
+  </section>
+
+  <Heroes id="stories" />
+
+  <section class="world" aria-labelledby="world-h">
+    <div class="wrap world-grid">
+      <div class="sec-head"><p class="eyebrow">The world</p><h2 id="world-h" data-reveal>Places and landmarks in the city</h2></div>
+      <div>
+        <h3>Landmarks</h3>
+        <ul class="tags">{LANDMARKS.map((l) => <li>{l}</li>)}</ul>
+        <h3>Neighbourhood</h3>
+        <ul class="tags">{PLACES.map((l) => <li>{l}</li>)}</ul>
+        <h3>Weather and seasons</h3>
+        <ul class="tags"><li>golden mornings</li><li>monsoon</li><li>fog</li><li>dust storms</li><li>moonlit nights</li><li>Diwali Mela</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="press" class="press ground-indigo" aria-labelledby="press-h">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow">Press kit</p><h2 id="press-h" data-reveal>Chhatpat fact sheet and press images</h2>
+        <p class="lede">Free to use in coverage, videos and streams of Chhatpat. Questions or a review build: <a class="link accent" href={`mailto:${SITE.email}?subject=Chhatpat%20press`}>email the studio</a>.</p>
+      </div>
+      <div class="press-grid">
+        <dl class="sheet">
+          {sheet.map(([k, v]) => (<div><dt>{k}</dt><dd>{v}</dd></div>))}
+        </dl>
+        <ul class="dl">
+          {press.map(([f, n]) => (
+            <li><a href={u('press/' + f)} download><span>{n}</span><Icon name="download" /></a></li>
+          ))}
+          <li><a href={u('media/chhatpat-trailer.mp4')} download><span>Trailer, 36 s, 720p MP4</span><Icon name="download" /></a></li>
+        </ul>
+      </div>
+      <div class="boiler">
+        <h3>About Viidesi Studios</h3>
+        <p>Viidesi Studios is an independent game studio from India making games by India, for India. Chhatpat! is its first game.</p>
+        <h3>Short description</h3>
+        <p>{GAME.short}</p>
+        <h3>Heroes and stories</h3>
+        <p>{HEROES.map((h) => `${h.name} (${h.story})`).join(', ')}.</p>
+      </div>
+    </div>
+  </section>
+
+  <Faq items={FAQ} title="Chhatpat questions, answered" />
+
+  <section class="gclose" aria-labelledby="gc-h">
+    <div class="wrap gclose-inner">
+      <h2 id="gc-h" data-reveal>Get Chhatpat free on Google Play</h2>
+      <a class="btn" href={GAME.play} rel="noopener" data-magnet><Icon name="play-store" /> Get it on Google Play</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .ghero { min-height: 92svh; display: grid; align-items: end; overflow: hidden; padding-bottom: clamp(60px, 10vh, 110px) !important; }
+  .ghero :global(.ghero-bg), .ghero :global(.ghero-bg img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .ghero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,13,38,.4), rgba(7,13,38,.2) 30%, rgba(7,13,38,.95)); }
+  .ghero-inner { position: relative; z-index: 2; display: grid; gap: 22px; }
+  .ghero h1 { font-size: clamp(2.8rem, 6.6vw, 6.4rem); max-width: 15ch; }
+  .crumbs { font-size: .9rem; color: var(--muted); }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .about-grid, .world-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: clamp(32px, 6vw, 96px); }
+  .about-copy { display: grid; gap: 20px; color: var(--muted); font-size: 1.1rem; }
+  .about-copy .big { font: 600 clamp(1.4rem, 2.2vw, 2rem)/1.3 var(--display); color: var(--cream); letter-spacing: -0.01em; }
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .fcard { padding: 28px; border-radius: var(--r-l); background: var(--card); box-shadow: inset 0 0 0 1px var(--line); display: grid; gap: 10px; align-content: start; transition: transform .4s var(--ease), background .3s; }
+  .fcard:hover { transform: translateY(-2px); background: rgba(255,244,226,.1); }
+  .fn { font: 800 .95rem/1 var(--display); color: var(--rani); }
+  .fcard p { color: var(--muted); }
+  .gal { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; }
+  .gal .frame { aspect-ratio: 16/9; display: block; }
+  .world-grid h3 { margin: 28px 0 14px; font-size: 1.1rem; font-family: var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--saffron); }
+  .world-grid h3:first-child { margin-top: 0; }
+  .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .tags li { padding: 10px 16px; border-radius: 999px; background: var(--card); box-shadow: inset 0 0 0 1px var(--line); font-weight: 600; }
+  .press-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .sheet { margin: 0; display: grid; }
+  .sheet div { display: grid; grid-template-columns: 180px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .sheet dt { color: var(--muted); }
+  .sheet dd { margin: 0; font-weight: 600; }
+  .dl { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-content: start; }
+  .dl a { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 52px; padding: 0 18px; border-radius: var(--r-s); background: var(--card); box-shadow: inset 0 0 0 1px var(--line); text-decoration: none; font-weight: 600; transition: background .2s, transform .3s var(--ease); }
+  .dl a:hover { background: rgba(255,194,61,.16); transform: translateY(-2px); }
+  .dl svg { width: 20px; height: 20px; color: var(--saffron); flex: none; }
+  .boiler { margin-top: 56px; display: grid; gap: 12px; max-width: 80ch; }
+  .boiler h3 { font-size: 1.2rem; margin-top: 12px; }
+  .boiler p { color: var(--muted); }
+  .gclose { text-align: center; }
+  .gclose-inner { display: grid; justify-items: center; gap: 28px; }
+  @media (max-width: 900px) {
+    .about-grid, .world-grid, .press-grid, .gal { grid-template-columns: 1fr; }
+    .feat-grid { grid-template-columns: 1fr; }
+    .dl { grid-template-columns: 1fr; }
+    .sheet div { grid-template-columns: 1fr; gap: 2px; }
+  }
+  @media (min-width: 901px) and (max-width: 1100px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
+</style>
