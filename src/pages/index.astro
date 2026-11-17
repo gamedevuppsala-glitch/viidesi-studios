@@ -286,6 +286,15 @@ const chapters = [
     .hero-cta .btn { width: 100%; }
   }
 
+  @media (max-height: 600px) and (orientation: landscape) {
+    .hero-inner { padding-top: 96px; padding-bottom: 32px; gap: 12px; }
+    .hero-word { font-size: clamp(3rem, 11vh, 5rem); }
+    .hero-sub { font-size: 1.3rem; }
+    .hero .lede { font-size: 1rem; max-width: 52ch; }
+    .hero-cta .btn { width: auto; }
+    .hero-hud { top: auto; bottom: 24px; left: auto; right: var(--gutter); }
+  }
+
   /* facts */
   .facts { padding-block: 44px !important; border-bottom: 1px solid var(--line); background: var(--night); }
   .facts-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }

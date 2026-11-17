@@ -36,4 +36,4 @@ More than 100 kinds of people walk the streets, each with their own walk: chaiwa
 
 A full city takes real work, so Chhatpat builds it behind the start screen. By the time you have picked a hero and an outfit, the city is standing, and the start screen itself is set inside it, with your hero waiting on a roof and the longest open street running away behind them.
 
-[See the city in the trailer](/chhatpat/) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).
+[See the city in the trailer](../../chhatpat/) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).

@@ -30,4 +30,4 @@ Each hero brings a special move to the run, like the **Dhol Blast**, the **Paan 
 
 Every line in the game can be read in plain English or in **Desi** mode, which is Hinglish full of pop-culture references. Try the English | Desi switch at the top of this site to get a taste.
 
-[Meet the heroes on the game page](/chhatpat/#stories) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).
+[Meet the heroes on the game page](../../chhatpat/#stories) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).

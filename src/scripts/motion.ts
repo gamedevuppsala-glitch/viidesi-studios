@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const saveData = !!(navigator as any).connection?.saveData;
 
 export function boot() {
   gsap.registerPlugin(ScrollTrigger);
@@ -99,8 +100,9 @@ export function boot() {
     ents.forEach((en) => {
       const v = en.target as HTMLVideoElement;
       if (en.isIntersecting) {
+        if (saveData) return;
         if (!v.src && v.dataset.src) { v.src = v.dataset.src; }
-        if (!reduce) v.play().catch(() => {});
+        if (!reduce && !saveData) v.play().catch(() => {});
       } else v.pause();
     });
   }, { rootMargin: '200px 0px' });
@@ -160,7 +162,7 @@ export function boot() {
 
   // ---------- the 3D hero ----------
   const gl = document.getElementById('hero-gl');
-  if (gl) {
+  if (gl && !saveData) {
     const hud = document.getElementById('hero-hud');
     const start = () => import('./hero3d').then(({ mountHero }) => {
       mountHero(gl, {

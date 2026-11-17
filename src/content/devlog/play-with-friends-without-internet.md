@@ -29,4 +29,4 @@ Before the race, each player can put up to three things from their home into the
 
 Local play costs players nothing, needs no sign-in and keeps working when the network does not. It also fits how people already play games together here: phones out, sitting next to each other, shouting.
 
-[Read about the city you race through](/devlog/building-an-indian-city-every-run/) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).
+[Read about the city you race through](../building-an-indian-city-every-run/) or [get Chhatpat on Google Play](https://play.google.com/store/apps/details?id=com.viidesi.chatpat).

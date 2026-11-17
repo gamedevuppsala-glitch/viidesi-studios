@@ -54,13 +54,16 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let renderer: THREE.WebGLRenderer;
   try {
-    renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer = new THREE.WebGLRenderer({ antialias: devicePixelRatio < 2, powerPreference: 'high-performance' });
   } catch {
     container.dataset.gl = 'off';
     return () => {};
   }
   const small = innerWidth < 760;
-  renderer.setPixelRatio(Math.min(devicePixelRatio, small ? 1.5 : 1.75));
+  const nav = navigator as any;
+  const weak = (nav.deviceMemory && nav.deviceMemory <= 4) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+  let dpr = Math.min(devicePixelRatio, weak ? 1.25 : small ? 1.5 : 1.75);
+  renderer.setPixelRatio(dpr);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
@@ -120,7 +123,7 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
   // ---------- background city: instanced boxes that wrap around the camera ----------
   const box = new THREE.BoxGeometry(1, 1, 1);
   box.translate(0, 0.5, 0);
-  const BG = small ? 520 : 900;
+  const BG = weak ? 380 : small ? 520 : 900;
   const bg = new THREE.InstancedMesh(box, cityMat, BG);
   const bgColor = new Float32Array(BG * 3);
   const bgLit = new Float32Array(BG);
@@ -318,7 +321,7 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
     scene.add(line);
     kites.push({ g, base: pos.clone(), ph: Math.random() * 10, line, anchor });
   };
-  for (let i = 0; i < (small ? 12 : 22); i++) makeKite(new THREE.Vector3(rand(-60, 200), rand(26, 62), rand(-120, -20)), rand(1.4, 2.6));
+  for (let i = 0; i < (weak ? 8 : small ? 12 : 22); i++) makeKite(new THREE.Vector3(rand(-60, 200), rand(26, 62), rand(-120, -20)), rand(1.4, 2.6));
 
   // the visitor's own kite: follows the pointer
   const myKite = new THREE.Group();
@@ -336,7 +339,7 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
   scene.add(myLine);
 
   // ---------- lanterns (Diwali) ----------
-  const LN = small ? 70 : 140;
+  const LN = weak ? 40 : small ? 70 : 140;
   const lanGeo = new THREE.BufferGeometry();
   const lanPos = new Float32Array(LN * 3);
   const lanSpd = new Float32Array(LN);
@@ -521,10 +524,18 @@ export function mountHero(container: HTMLElement, opts: { onScore?: (n: number, 
     ml.needsUpdate = true;
   };
 
+  let slow = 0, seen = 0;
   const frame = () => {
     raf = requestAnimationFrame(frame);
-    const dt = Math.min(clock.getDelta(), 1 / 20);
+    const raw = clock.getDelta();
+    const dt = Math.min(raw, 1 / 20);
     if (!visible || document.hidden) return;
+    if (seen < 240) {
+      seen++;
+      if (raw > 1 / 40) slow++;
+      if (seen % 60 === 0 && slow > 30 && dpr > 0.75) { dpr = Math.max(0.75, dpr - 0.35); renderer.setPixelRatio(dpr); resize(); slow = 0; }
+      if (seen % 60 === 0) slow = 0;
+    }
     step(dt);
     renderer.render(scene, camera);
   };
